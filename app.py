@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import psycopg2
+import psycopg
 from dotenv import load_dotenv
 import os
 from datetime import datetime
@@ -15,7 +15,7 @@ load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL")
 # ---------------- CONNECT DB ----------------
 def load_data():
-    conn = psycopg2.connect(DATABASE_URL)
+    conn = psycopg.connect(DATABASE_URL)
 
     query = "SELECT * FROM weather ORDER BY last_updated DESC LIMIT 50"
     df = pd.read_sql(query, conn)
