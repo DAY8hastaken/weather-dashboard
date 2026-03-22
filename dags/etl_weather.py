@@ -1,6 +1,6 @@
 import requests
 import pandas as pd
-import psycopg
+import psycopg2
 from dotenv import load_dotenv
 import os
 from datetime import datetime
@@ -55,7 +55,7 @@ def load(df):
 
     try:
         print("[LOAD] Connecting to DB...")
-        conn = psycopg.connect(DATABASE_URL)
+        conn = psycopg2.connect(DATABASE_URL)
         cursor = conn.cursor()
 
         cursor.execute("""
